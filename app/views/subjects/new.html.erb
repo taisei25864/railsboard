@@ -1,0 +1,14 @@
+<h1>新規投稿</h1>
+<%= form_with mpdel: @subject do |form| %>
+    <div>
+        <%= form.label :クラス名 %><br>
+        <%= form.text_field :subject_name %>
+    </div>
+    <div>
+        <%= form.label :教授名 %><br>
+        <%= form.text_field :teacher_name %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
