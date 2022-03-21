@@ -1,0 +1,24 @@
+<h1>スレッド一覧</h1>
+<div>
+    <%= link_to 'スレッド作成', new_subject_path %>
+</div>
+<table>
+    <tr>
+        <th>id</th>
+        <th>クラス名</th>
+        <th>教授名</th>
+        <th>作成日時</th>
+    </tr>
+    <% @subjects.each do |subject| %>
+    <tr>
+        <td><%= subject.id %></td>
+        <td><%= subject.subject_name %></td>
+        <td><%= subject.teacher_name %></td>
+        <td><%= subject.created_at.in_time_zone('Tokyo') %></td>
+        <td><%= link_to '開く', subject_path(subject) %></td>
+        <td><%= link_to '編集', edit_subject_path(subject) %></td>
+        <td><%= link_to '削除', subject_path(subject),
+            data:  { turbo_method: 'delete', turbo_confirm: '本当に削除しますか?' } %></td>
+    </tr>
+    <% end %>
+</table>
