@@ -7,14 +7,14 @@
         <th>id</th>
         <th>クラス名</th>
         <th>教授名</th>
-        <th>作成日時</th>
+        <th>(作成・更新)日時</th>
     </tr>
     <% @subjects.each do |subject| %>
     <tr>
         <td><%= subject.id %></td>
         <td><%= subject.subject_name %></td>
         <td><%= subject.teacher_name %></td>
-        <td><%= subject.created_at.in_time_zone('Tokyo') %></td>
+        <td><%= subject.updated_at.in_time_zone('Tokyo') %></td>
         <td><%= link_to '開く', subject_path(subject) %></td>
         <td><%= link_to '編集', edit_subject_path(subject) %></td>
         <td><%= link_to '削除', subject_path(subject),
