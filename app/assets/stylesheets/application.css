@@ -18,3 +18,15 @@
 .answer_post {
     border-top: 1px solid black
 }
+
+/*index.htmlのレイアウト*/
+table, td, th {
+    font-size:20px;
+  	border-collapse: collapse;
+  	border-spacing: 0;
+  	table-layout: fixed;
+	border: 2px black solid;
+}
+.home_link {
+    font-size:20px;
+}

@@ -7,7 +7,7 @@
     <%= @subject.teacher_name %>
 </h3>
 <div>
-    <%= link_to 'スレッド一覧', subjects_path %>
+    <%= link_to 'HOME', subjects_path %>
 </div>
 
 <div>
@@ -15,7 +15,11 @@
         <p class="answer_post">
             <%= answer.id %>
             Name:
-            <%= answer.name %>
+            <% if answer.name.empty? %>
+                Anonymous
+            <% else %>
+                <%= answer.name %>
+            <% end %>           
             <%= answer.updated_at.in_time_zone('Tokyo') %>
         </p>
         <p>
@@ -24,7 +28,7 @@
 <% end %>
 </div>
 
-<h2>投稿する</h2>
+<h2>投稿作成</h2>
 <%= form_with model: [@subject, @subject.answers.build] do |form| %>
     <div>
         <%= form.label :名前 %><br>

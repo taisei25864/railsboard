@@ -1,5 +1,5 @@
 <h1>スレッド一覧</h1>
-<div>
+<div class="home_link">
     <%= link_to 'スレッド作成', new_subject_path %>
 </div>
 <table>
@@ -12,10 +12,9 @@
     <% @subjects.each do |subject| %>
     <tr>
         <td><%= subject.id %></td>
-        <td><%= subject.subject_name %></td>
+        <td><%= link_to subject.subject_name, subject_path(subject) %></td>
         <td><%= subject.teacher_name %></td>
         <td><%= subject.updated_at.in_time_zone('Tokyo') %></td>
-        <td><%= link_to '開く', subject_path(subject) %></td>
         <td><%= link_to '編集', edit_subject_path(subject) %></td>
     </tr>
     <% end %>
