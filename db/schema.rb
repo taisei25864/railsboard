@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_12_180705) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_22_072157) do
+  create_table "answers", force: :cascade do |t|
+    t.string "name"
+    t.text "content"
+    t.integer "subject_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_answers_on_subject_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string "subject_name"
     t.string "teacher_name"
@@ -18,4 +27,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_12_180705) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "answers", "subjects"
 end

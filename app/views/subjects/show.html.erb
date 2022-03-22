@@ -10,3 +10,34 @@
     教授名:<br>
     <%= @subject.teacher_name %>
 </p>
+
+<h2>投稿</h2>
+<% @subject.answers.each do |answer| %>
+    <p>
+        名前:<br>
+        <%= answer.name %>
+    </p>
+    <p>
+        内容:<br>
+        <%= answer.content %>
+    </p>
+    <p>
+        <%= link_to '削除', [answer.subject, answer],
+         data: { turbo_method: 'delete', turbo_confirm: '本当に削除しますか?' } %>
+    </p>
+<% end %>
+
+<h2>投稿する</h2>
+<%= form_with model: [@subject, @subject.answers.build] do |form| %>
+    <div>
+        <%= form.label :名前 %><br>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <%= form.label :投稿内容 %><br>
+        <%= form.text_area :content %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
