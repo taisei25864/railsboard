@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+/*show.htmlのレイアウト*/
+.answer_post {
+    border-top: 1px solid black
+}

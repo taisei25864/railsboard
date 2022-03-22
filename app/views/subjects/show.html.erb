@@ -1,31 +1,28 @@
-<h1>スレッド作成</h1>
+<h2>
+    クラス名: 
+    <%= @subject.subject_name %>
+</h2>
+<h3>
+    教授名: 
+    <%= @subject.teacher_name %>
+</h3>
 <div>
     <%= link_to 'スレッド一覧', subjects_path %>
 </div>
-<p>
-    クラス名:<br>
-    <%= @subject.subject_name %>
-</p>
-<p>
-    教授名:<br>
-    <%= @subject.teacher_name %>
-</p>
 
-<h2>投稿</h2>
-<% @subject.answers.each do |answer| %>
-    <p>
-        名前:<br>
-        <%= answer.name %>
-    </p>
-    <p>
-        内容:<br>
-        <%= answer.content %>
-    </p>
-    <p>
-        <%= link_to '削除', [answer.subject, answer],
-         data: { turbo_method: 'delete', turbo_confirm: '本当に削除しますか?' } %>
-    </p>
+<div>
+    <% @subject.answers.each do |answer| %>
+        <p class="answer_post">
+            <%= answer.id %>
+            Name:
+            <%= answer.name %>
+            <%= answer.updated_at.in_time_zone('Tokyo') %>
+        </p>
+        <p>
+            <%= answer.content %>
+        </p>
 <% end %>
+</div>
 
 <h2>投稿する</h2>
 <%= form_with model: [@subject, @subject.answers.build] do |form| %>

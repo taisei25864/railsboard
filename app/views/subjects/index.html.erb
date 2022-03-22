@@ -17,8 +17,6 @@
         <td><%= subject.updated_at.in_time_zone('Tokyo') %></td>
         <td><%= link_to '開く', subject_path(subject) %></td>
         <td><%= link_to '編集', edit_subject_path(subject) %></td>
-        <td><%= link_to '削除', subject_path(subject),
-            data:  { turbo_method: 'delete', turbo_confirm: '本当に削除しますか?' } %></td>
     </tr>
     <% end %>
 </table>
