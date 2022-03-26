@@ -11,12 +11,13 @@
 </div>
 
 <div>
+    <% id = 1 %>
     <% @subject.answers.each do |answer| %>
         <p class="answer_post">
-            <%= answer.id %>
+            <%= id %>
             Name:
             <% if answer.name.empty? %>
-                Anonymous
+                名無し
             <% else %>
                 <%= answer.name %>
             <% end %>           
@@ -25,10 +26,14 @@
         <p>
             <%= answer.content %>
         </p>
-<% end %>
+        <% if Time.now - answer.created_at > 172800 %>
+            <% answer.destroy %>
+        <% end %>
+        <% id += 1 %>
+    <% end %>
 </div>
 
-<h2>投稿作成</h2>
+<h2 class="create_post">投稿作成</h2>
 <%= form_with model: [@subject, @subject.answers.build] do |form| %>
     <div>
         <%= form.label :名前 %><br>
@@ -39,6 +44,6 @@
         <%= form.text_area :content %>
     </div>
     <div>
-        <%= form.submit %>
+        <%= form.submit '送信' %>
     </div>
 <% end %>

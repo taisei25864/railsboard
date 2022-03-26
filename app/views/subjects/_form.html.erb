@@ -1,5 +1,5 @@
 <div>
-    <%= link_to 'スレッド一覧', subjects_path %>
+    <%= link_to 'HOME', subjects_path %>
 </div>
 <%= form_with model: @subject do |form| %>
     <% if @subject.errors.any? %>
@@ -20,6 +20,6 @@
         <%= form.text_field :teacher_name %>
     </div>
     <div>
-        <%= form.submit %>
+        <%= form.submit "送信" %>
     </div>
 <% end %>

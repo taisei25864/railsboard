@@ -18,10 +18,20 @@
 .answer_post {
     border-top: 1px solid black
 }
+.create_post {
+	border-top: 1px solid black
+}
 
 /*index.htmlのレイアウト*/
-table, td, th {
+table {
     font-size:20px;
+  	border-collapse: collapse;
+  	border-spacing: 0;
+  	table-layout: fixed;
+	border: 2px black solid;
+}
+tr {
+	font-size:20px;
   	border-collapse: collapse;
   	border-spacing: 0;
   	table-layout: fixed;
