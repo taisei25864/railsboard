@@ -24,11 +24,9 @@
             <%= answer.updated_at.in_time_zone('Tokyo') %>
         </p>
         <p>
-            <%= answer.content %>
+            <% text = answer.content %>
+            <%= safe_join(text.split("\n"), tag(:br)) %>
         </p>
-        <% if Time.now - answer.created_at > 172800 %>
-            <% answer.destroy %>
-        <% end %>
         <% id += 1 %>
     <% end %>
 </div>

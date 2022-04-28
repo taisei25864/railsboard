@@ -11,15 +11,17 @@
             </ul>
         </div>
     <% end %>
-    <div>
-        <%= form.label :クラス名 %><br>
-        <%= form.text_field :subject_name %>
-    </div>
-    <div>
-        <%= form.label :教授名 %><br>
-        <%= form.text_field :teacher_name %>
-    </div>
-    <div>
-        <%= form.submit "送信" %>
+    <div class="create_thread">
+        <div>
+            <%= form.label :クラス名 %><br>
+            <%= form.text_field :subject_name %>
+        </div>
+        <div>
+            <%= form.label :教授名 %><br>
+            <%= form.text_field :teacher_name %>
+        </div>
+        <div>
+            <%= form.submit "送信" %>
+        </div>
     </div>
 <% end %>

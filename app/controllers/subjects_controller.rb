@@ -1,6 +1,8 @@
 class SubjectsController < ApplicationController
     def index
         @subjects = Subject.all
+        @q = Subject.ransack(params[:q])
+        @users = @q.result(distinct: true)
     end
 
     def show
@@ -37,6 +39,9 @@ class SubjectsController < ApplicationController
         @subject = Subject.find(params[:id])
         @subject.destroy
         redirect_to subject_path
+    end
+
+    def explain
     end
 
     private

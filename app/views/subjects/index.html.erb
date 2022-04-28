@@ -1,22 +1,35 @@
-<h1>スレッド一覧</h1>
+<h1>関西学院大学　掲示板</h1>
+<div class="explain">
+    <%= link_to "ちょっとした掲示板の説明", "/subjects/explain" %>
+</div>    
+
 <div class="home_link">
     <%= link_to 'スレッドを立てる', new_subject_path %>
 </div>
+<div class="search">
+    <%= search_form_for @q do |f| %>
+        <%= f.label :name_cont, "クラス名検索" %><br>
+        <%= f.search_field :subject_name_cont %>
+ 
+        <%= f.submit %>
+    <% end %>
+</div>
+
 <table>
     <tr>
         <th>クラス名</th>
         <th>教授名</th>
-        <th>(作成・更新)日時</th>
+        <th>作成日時</th>
     </tr>
-    <% @subjects.each do |subject| %>
+    <% @users.each do |user| %>
     <tr>
-        <td><%= link_to subject.subject_name, subject_path(subject) %></td>
-        <td><%= subject.teacher_name %></td>
-        <td><%= subject.updated_at.in_time_zone('Tokyo') %></td>
-        <td><%= link_to '編集', edit_subject_path(subject) %></td>
-        <% if Time.now - subject.created_at > 172800 %>
-            <% subject.destroy %>
+        <td><%= link_to user.subject_name, subject_path(user) %></td>
+        <td><%= user.teacher_name %></td>
+        <td><%= user.created_at.in_time_zone('Tokyo') %></td>
+        <td><%= link_to '編集', edit_subject_path(user) %></td>
+        <% if Time.now - user.created_at > 7200 %>
+            <% user.destroy %>
         <% end %>
     </tr>
     <% end %>
-</table>
+</table> 
