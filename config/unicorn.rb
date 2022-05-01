@@ -8,6 +8,9 @@ app_path = "/var/www/railsboard"
 listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
 pid "#{app_path}/current/tmp/unicorn.pid"
 
+stderr_path "#{root_path}/log/unicorn.stderr.log"
+stdout_path "#{root_path}/log/unicorn.stdout.log"
+
 #何秒でタイムアウトするか
 timeout 60
 
